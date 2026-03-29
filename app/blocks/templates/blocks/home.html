@@ -1,0 +1,14 @@
+{% extends 'blocks/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h2>Welcome to the Color Blocks App!</h2>
+    <p>This is the home page. You can add your content here.</p>
+</div>
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+{% endblock %}
