@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Color Blocks{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blocks/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Color Blocks App{% endblock %}</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Color Blocks App</p>
+    </footer>
+</body>
+</html>
