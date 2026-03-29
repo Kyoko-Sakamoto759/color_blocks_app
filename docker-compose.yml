@@ -1,0 +1,35 @@
+# 開発用
+services:
+  db:
+    image: mysql:8.0.42
+    container_name: color_blocks_mysql
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: color_blocks_web
+    env_file:
+      - .env
+    volumes:
+      - .:/app # 開発時のみ
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+  db_data:
