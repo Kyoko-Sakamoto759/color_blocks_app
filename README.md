@@ -1,6 +1,7 @@
 # color_blocks_app
 カラーブロックを積み上げるアプリ。学習用に作成。
 
+```
 本アプリのフォルダ構造
 color_block_app/
 ├── apps/
@@ -31,3 +32,4 @@ color_block_app/
 ├── docker-compose.prod.yml   # 本番用（nginx付き）
 ├── tailwind.config.js
 └── .env.example
+ ```
